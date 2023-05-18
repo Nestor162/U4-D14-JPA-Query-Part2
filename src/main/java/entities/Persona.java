@@ -7,7 +7,10 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +36,13 @@ public class Persona {
 
 	@OneToMany(mappedBy = "persona")
 	private Set<Partecipazione> listaPartecipazioni;
+
+	@ManyToOne
+	@JoinColumn(name = "gara_id")
+	private GaraDiAtletica garaDiAtletica;
+
+	@OneToOne(mappedBy = "vincitore")
+	private GaraDiAtletica garaVinta;
 
 	public Persona(String nome, String cognome, String email,
 			LocalDate dataNascita, Sesso sesso) {
