@@ -19,12 +19,10 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @Table(name = "Eventi")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -52,12 +50,21 @@ public class Evento {
 	private Location location;
 
 	public Evento(String titolo, LocalDate dataEvento, String descrizione,
-			TipoEvento tipoEvento) {
+			TipoEvento tipoEvento, Location location) {
 
 		this.titolo = titolo;
 		this.dataEvento = dataEvento;
 		this.descrizione = descrizione;
 		this.tipoEvento = tipoEvento;
+		this.location = location;
+	}
+
+	@Override
+	public String toString() {
+		return "Evento [id=" + id + ", titolo=" + titolo + ", dataEvento="
+				+ dataEvento + ", descrizione=" + descrizione + ", tipoEvento="
+				+ tipoEvento + ", listaPartecipazioni=" + listaPartecipazioni
+				+ ", location=" + location + "]";
 	}
 
 }
