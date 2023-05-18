@@ -1,5 +1,7 @@
 package entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -21,6 +23,13 @@ public class Concerto extends Evento {
 	public enum Genere {
 		CLASSICO, ROCK, POP
 
+	}
+
+	public Concerto(String titolo, LocalDate dataEvento, String descrizione,
+			TipoEvento tipoEvento, Genere genere, boolean isStreaming) {
+		super(titolo, dataEvento, descrizione, tipoEvento);
+		this.genere = genere;
+		this.isStreaming = isStreaming;
 	}
 
 }
