@@ -1,10 +1,13 @@
 package dao;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
+import entities.Concerto.Genere;
 import entities.Evento;
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,5 +54,24 @@ public class EventoDAO {
 				+ System.lineSeparator());
 		em.refresh(found);
 		log.info("Ripristinato Evento ai valori: " + found);
+
 	}
+
+	public List<Evento> getConcertiInStreaming(boolean isStreaming) {
+		TypedQuery<Evento> query = em.createQuery(
+				"SELECT e FROM Evento e WHERE e.isStreaming = :isStreaming",
+				Evento.class);
+		query.setParameter("isStreaming", isStreaming);
+		return query.getResultList();
+
+	}
+
+	public List<Evento> getConcertiPerGenere(Genere genere) {
+		TypedQuery<Evento> query = em.createQuery(
+				"SELECT e FROM Evento e WHERE e.genere LIKE :genere",
+				Evento.class);
+		query.setParameter("genere", genere);
+		return query.getResultList();
+	}
+
 }
