@@ -31,10 +31,11 @@ public class GaraDiAtletica extends Evento {
 
 	public GaraDiAtletica(String titolo, LocalDate dataEvento,
 			String descrizione, TipoEvento tipoEvento, Set<Persona> setAtleti,
-			Persona vincitore) {
-		super(titolo, dataEvento, descrizione, tipoEvento);
+			Persona vincitore, Location location) {
+		super(titolo, dataEvento, descrizione, tipoEvento, location);
 		SetAtleti = setAtleti;
 		this.vincitore = vincitore;
+
 	}
 
 }

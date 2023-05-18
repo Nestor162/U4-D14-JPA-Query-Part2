@@ -26,8 +26,9 @@ public class Concerto extends Evento {
 	}
 
 	public Concerto(String titolo, LocalDate dataEvento, String descrizione,
-			TipoEvento tipoEvento, Genere genere, boolean isStreaming) {
-		super(titolo, dataEvento, descrizione, tipoEvento);
+			TipoEvento tipoEvento, Genere genere, boolean isStreaming,
+			Location location) {
+		super(titolo, dataEvento, descrizione, tipoEvento, location);
 		this.genere = genere;
 		this.isStreaming = isStreaming;
 	}
